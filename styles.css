@@ -1,0 +1,59 @@
+/* CSS Reset ------------------------------------------------------------------------------------------------------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Body --------------------------------------------------------------------------------------------------------------------------------------------- */
+body {
+    background-color: black;
+    color: white;
+    max-height: 100vh;
+    overflow: hidden;
+}
+/* Container -----------------------------------------------------------------------------------------------------------------------------------------*/
+.container {
+    background-color: rgb(23, 23, 24);
+    padding: 50px;
+    width: auto;
+    margin: 5% auto;
+    position: absolute;
+    right: 10%;
+    display: inline-grid;
+    justify-items: center;
+    align-items: center;
+}
+.container2 {
+    border: 1px solid white;
+    padding: 0;
+    margin: 0;
+    height: 500px;
+    width: 500px;
+    display: grid;
+}
+/* Creating Grid ------------------------------------------------------------------------------------------------------------------------------------*/
+.grid {
+    border: 1px solid black;
+    background-color: white;
+}
+/* Settings -------------------------------------------------------------------------------------------------------------------------------------------*/
+.settings {
+    background-color: rgb(23, 23, 24);
+    display: inline-block;
+    padding: 10px;
+    width: auto;
+    margin: 5% auto;
+    position: absolute;
+    left: 10%;
+}
+
+.color {
+    display: inline-block;
+    padding: 0 20px 0 15px;
+    font-size: 20px;
+}
+#range {
+    display: block;
+    margin-top: 25px;
+    background-color: red;
+}
