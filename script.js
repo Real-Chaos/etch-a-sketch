@@ -67,15 +67,23 @@ changeCursor();
 // Theme -----------------------------------------------------------------------------------------------------------------------------------------------
 const theme = document.querySelector('.theme');
 const themeSelection = Array.from(theme.childNodes);
+const light = document.querySelector('#light')
+const dark = document.querySelector('#dark')
 function themeChange() {
-    themeSelection[3].addEventListener('click', ()=> {
+    themeSelection[1].addEventListener('click', ()=> {
         body.style.background = 'url(\'images/theme1.jpg\') no-repeat'
     });
-    themeSelection[5].addEventListener('click', ()=> {
+    themeSelection[3].addEventListener('click', ()=> {
         body.style.background = 'url(\'images/theme2.jpg\') no-repeat'
     });
-    themeSelection[7].addEventListener('click', ()=> {
+    themeSelection[5].addEventListener('click', ()=> {
         body.style.background = 'url(\'images/theme3.jpg\') no-repeat'
     });
+    light.addEventListener('input', ()=> {
+        body.style.background = '#FFFFFF';
+    })
+    dark.addEventListener('input', ()=> {
+        body.style.background = '#2C2F33';
+    })
 }
 themeChange();
