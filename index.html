@@ -18,10 +18,28 @@
     <!-- Setting --------------------------------------------------------------------------------------------------------------------->
     <div class="settings">
         <form>
-            <label for="color" class="color">Color</label>
-        <input type="color" name="color" id="color">
-        <input type="range" name="range" id="range" min="1" max="50">
+            <div class="color-div">
+            <input type="color" name="color" id="color">
+            <label for="color" class="color">Pen Color</label>
+            <br>
+            <input type="color" name="color" id="color" class="bg-color">
+            <label for="bg-color" class="color">Color Fill</label>
+            <br>
+            <input type="color" name="color" id="color" class="borderColor">
+            <label for="border-color" class="color">Grid Line Color</label>
+            </div>
         </form>
+        <h1 class="h1">Change Pen Design</h1>
+        <div class="cursor">
+        <img class='cursor1' src="images/cursor1.png" alt="">
+        <img src="images/cursor2.png" alt="">
+        <img src="images/cursor3.png" alt="">
+        <img src="images/cursor4.png" alt="">
+        <img src="images/cursor5.png" alt="">
+        <img src="images/cursor6.png" alt="">
+        </div>
+        <input type="range" name="range" id="range" min="1" max="50">
+        <p class="gridSizeIndicator">26 x 26</p>
     </div>
     <script src="script.js"></script>
 </body>
