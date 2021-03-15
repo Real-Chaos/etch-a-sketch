@@ -1,5 +1,6 @@
 // Global Scope ------------------------------------------------------------------------------------------------------------------------------------------
-const html = document.querySelector('html')
+const html = document.querySelector('html');
+const body = document.querySelector('body')
 const container = document.querySelector('.container2');
 const drawingColor = document.querySelector('#color');
 const bgColor = document.querySelector('.bg-color')
@@ -63,3 +64,18 @@ function changeCursor() {
     });
 }
 changeCursor();
+// Theme -----------------------------------------------------------------------------------------------------------------------------------------------
+const theme = document.querySelector('.theme');
+const themeSelection = Array.from(theme.childNodes);
+function themeChange() {
+    themeSelection[3].addEventListener('click', ()=> {
+        body.style.background = 'url(\'images/theme1.jpg\') no-repeat'
+    });
+    themeSelection[5].addEventListener('click', ()=> {
+        body.style.background = 'url(\'images/theme2.jpg\') no-repeat'
+    });
+    themeSelection[7].addEventListener('click', ()=> {
+        body.style.background = 'url(\'images/theme3.jpg\') no-repeat'
+    });
+}
+themeChange();
