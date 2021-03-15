@@ -6,8 +6,13 @@ const drawingColor = document.querySelector('#color');
 const bgColor = document.querySelector('.bg-color')
 let gridSize = document.querySelector('#range');
 const borderColor = document.querySelector('.borderColor');
+const borderLabel = document.querySelector('.borderColorH1')
 const rainbowToggle = document.querySelector('.rainbow');
-let rainbowOn = true;
+let rainbowOn = null;
+const eraser = document.querySelector('.eraser');
+let erase = null;
+let gridLines = document.querySelector('.gridLines');
+let gridLinesOn = null;
 // Creating Grid -----------------------------------------------------------------------------------------------------------------------------------------
 function creatingGrid(gridBox) {
 for (let i=0; i < gridBox * gridBox; i++) {
@@ -25,25 +30,41 @@ for (let i=0; i < gridBox * gridBox; i++) {
     borderColor.addEventListener('input',()=> {
         grid.style.border = `2px solid ${borderColor.value}`
     });
-    rainbowToggle.addEventListener('click', ()=> {
-       if(rainbowOn) {
-           rainbowOn = false;
-       }
-       else {
-           rainbowOn = true;
-       }
-    });
     grid.addEventListener('mouseover', ()=> {
         if (rainbowOn) {
             grid.style.backgroundColor = rainbow();
+            
         }
         else {
             grid.style.backgroundColor = drawingColor.value;
+            rainbowToggle.style.border = 'none'
+        }
+    });
+   
+    grid.addEventListener('mouseover', ()=> {
+        if(erase) {
+            grid.style.background = 'white';    
         }
     });
 
-    }
+    gridLines.addEventListener('click', ()=> {
+        if(!gridLinesOn) {
+            grid.style.border = 'none';
+            borderColor.style.opacity = '0';
+            borderLabel.style.opacity = '0';
+        }
+        else if(gridLinesOn) {
+            grid.style.border = `2px solid ${borderColor.value}`;
+            borderColor.style.opacity = '1';
+            borderLabel.style.opacity = '1';
+        } 
+    })
+    
+
+    
 }
+
+    }
 creatingGrid(gridSize.value);
 
 // Changing Grid Size -------------------------------------------------------------------------------------------------------------------------------------
@@ -106,15 +127,6 @@ function themeChange() {
     });
 }
 themeChange();
-function ok() {
-    if(body.style.background === '#FFFFFF') {
-        light.checked = true;
-    }
-    else {
-        light.checked = false;
-    }
-}
-ok()
 // Rainbow----------------------------------------------------------------------------------------------------------------------------------------------------
 function rainbow() {
     const red = Math.floor((Math.random() * 256) + 1);
@@ -123,3 +135,55 @@ function rainbow() {
     const rainbowBg = `rgb(${Number(red)}, ${Number(green)}, ${Number(black)})`;
     return rainbowBg
 }
+
+function rainbowState() {
+    rainbowToggle.addEventListener('click', ()=> {
+       if(rainbowOn) {
+           rainbowOn = false;
+           rainbowToggle.style.border = 'none';
+       }
+       else {
+           rainbowOn = true;
+           rainbowToggle.style.border = '2px solid red';
+       }
+    });
+}
+rainbowState();
+// Delete----------------------------------------------------------------------------------------------------------------------------------------------------
+const deleteDrawing = document.querySelector('.delete');
+deleteDrawing.addEventListener('click', ()=> {
+    clear();
+    creatingGrid(gridSize.value);
+})
+
+// Eraser ------------------------------------------------------------------------------------------------------------------------------------------------
+function toggleEraser() {
+    eraser.addEventListener('click', ()=> {
+        if(erase) {
+            erase = false;
+            eraser.style.border = 'none';
+        }
+        else {
+            erase = true;
+            eraser.style.border = '2px solid red';
+        }
+    })
+
+}
+toggleEraser();
+
+// GridLines ------------------------------------------------------------------------------------------------------------------------------------------------
+function gridLine() {
+    gridLines.addEventListener('click', ()=> {
+    if(gridLinesOn) {
+        gridLinesOn = false;
+        gridLines.style.border = 'none'
+        
+    }
+    else {
+        gridLinesOn = true;
+        gridLines.style.border = '2px solid red'        
+    }
+});
+}
+gridLine();
