@@ -6,6 +6,8 @@ const drawingColor = document.querySelector('#color');
 const bgColor = document.querySelector('.bg-color')
 let gridSize = document.querySelector('#range');
 const borderColor = document.querySelector('.borderColor');
+const rainbowToggle = document.querySelector('.rainbow');
+let rainbowOn = true;
 // Creating Grid -----------------------------------------------------------------------------------------------------------------------------------------
 function creatingGrid(gridBox) {
 for (let i=0; i < gridBox * gridBox; i++) {
@@ -22,8 +24,25 @@ for (let i=0; i < gridBox * gridBox; i++) {
     });
     borderColor.addEventListener('input',()=> {
         grid.style.border = `2px solid ${borderColor.value}`
-    })
-}
+    });
+    rainbowToggle.addEventListener('click', ()=> {
+       if(rainbowOn) {
+           rainbowOn = false;
+       }
+       else {
+           rainbowOn = true;
+       }
+    });
+    grid.addEventListener('mouseover', ()=> {
+        if (rainbowOn) {
+            grid.style.backgroundColor = rainbow();
+        }
+        else {
+            grid.style.backgroundColor = drawingColor.value;
+        }
+    });
+
+    }
 }
 creatingGrid(gridSize.value);
 
@@ -84,6 +103,23 @@ function themeChange() {
     })
     dark.addEventListener('input', ()=> {
         body.style.background = '#2C2F33';
-    })
+    });
 }
 themeChange();
+function ok() {
+    if(body.style.background === '#FFFFFF') {
+        light.checked = true;
+    }
+    else {
+        light.checked = false;
+    }
+}
+ok()
+// Rainbow----------------------------------------------------------------------------------------------------------------------------------------------------
+function rainbow() {
+    const red = Math.floor((Math.random() * 256) + 1);
+    const green = Math.floor((Math.random() * 256) + 1);
+    const black = Math.floor((Math.random() * 256) + 1);
+    const rainbowBg = `rgb(${Number(red)}, ${Number(green)}, ${Number(black)})`;
+    return rainbowBg
+}
