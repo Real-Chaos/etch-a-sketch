@@ -56,20 +56,32 @@ const rainbowMode = (e) => {
 }
 
 const eraser = (e)=> {
-  
+  e.target.style.backgroundColor = 'white'
+}
+
+const clearGrid = () => {
+  const gridDivs = document.querySelectorAll('.grid div')
+  gridDivs.forEach(div => {
+    div.style.backgroundColor = 'white'
+  })
 }
 
 const addSketchToGrid = () => {
   const gridDivs = document.querySelectorAll('.grid div')
+  console.log(mode)
   gridDivs.forEach((div) => {
     div.addEventListener('mouseover', (e) => {
       if (mode === 'color') {
         colorMode(e)
       } else if(mode === 'rainbow') {
         rainbowMode(e)
+      } else if(mode === 'eraser') {
+        eraser(e)
       }
     })
   })
+  const clearGridButton = document.querySelector('.clear-grid')
+  clearGridButton.addEventListener('click', clearGrid)
 }
 
 const createGrid = () => {
