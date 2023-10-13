@@ -15,22 +15,59 @@ const handlingModes = () => {
       e.target.style.color = 'white'
       e.target.style.backgroundColor = '#333'
       mode = e.target.className
+      // rainbowMode()
     })
   })
 }
 
-const colorMode = () => {
-  if (mode === 'color') {
-    colorSelected.addEventListener('change', (e) => {})
-    
+const colorMode = (e) => {
+  e.target.style.backgroundColor = colorSelected.value
+}
+
+const rainbowMode = (e) => {
+  const arrayOfColorFunctions = [
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+  ]
+  let randomColor = '#'
+
+  for (let i = 0; i < 6; i++) {
+    let index = Math.floor(Math.random() * 16)
+    let value = arrayOfColorFunctions[index]
+
+    randomColor += value
   }
+
+  e.target.style.backgroundColor = randomColor
+}
+
+const eraser = (e)=> {
+  
 }
 
 const addSketchToGrid = () => {
   const gridDivs = document.querySelectorAll('.grid div')
-  gridDivs.forEach(div => {
+  gridDivs.forEach((div) => {
     div.addEventListener('mouseover', (e) => {
-      e.target.style.backgroundColor = colorSelected.value
+      if (mode === 'color') {
+        colorMode(e)
+      } else if(mode === 'rainbow') {
+        rainbowMode(e)
+      }
     })
   })
 }
@@ -52,9 +89,6 @@ const createGrid = () => {
     }
   }
 }
-
-colorMode()
 handlingModes()
 createGrid()
 addSketchToGrid()
-
