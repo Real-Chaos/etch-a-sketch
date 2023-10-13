@@ -4,6 +4,7 @@ const gridOptions = document.querySelectorAll('.grid-options button')
 const gridSize = document.querySelector('.grid-size')
 const sizeIndicator = document.querySelector('.size-indicator')
 const colorSelected = document.querySelector('.color-selected')
+const clearGridButton = document.querySelector('.clear-grid')
 
 const handlingModes = () => {
   gridOptions.forEach((option) => {
@@ -15,7 +16,6 @@ const handlingModes = () => {
       e.target.style.color = 'white'
       e.target.style.backgroundColor = '#333'
       mode = e.target.className
-      // rainbowMode()
     })
   })
 }
@@ -24,7 +24,7 @@ const colorMode = (e) => {
   e.target.style.backgroundColor = colorSelected.value
 }
 
-const rainbowMode = (e) => {
+const randomMode = (e) => {
   const arrayOfColorFunctions = [
     '0',
     '1',
@@ -66,21 +66,19 @@ const clearGrid = () => {
   })
 }
 
-const addSketchToGrid = () => {
+const handleGridFunctionality = () => {
   const gridDivs = document.querySelectorAll('.grid div')
-  console.log(mode)
   gridDivs.forEach((div) => {
     div.addEventListener('mouseover', (e) => {
       if (mode === 'color') {
         colorMode(e)
-      } else if(mode === 'rainbow') {
-        rainbowMode(e)
+      } else if(mode === 'random') {
+        randomMode(e)
       } else if(mode === 'eraser') {
         eraser(e)
       }
     })
   })
-  const clearGridButton = document.querySelector('.clear-grid')
   clearGridButton.addEventListener('click', clearGrid)
 }
 
@@ -90,7 +88,7 @@ const createGrid = () => {
   gridSize.addEventListener('input', () => {
     sizeIndicator.textContent = `${gridSize.value} x ${gridSize.value}`
     createGrid()
-    addSketchToGrid()
+    handleGridFunctionality()
   })
   if (grid.innerHTML === '') {
     for (let i = 0; i <= gridSize.value * gridSize.value; i++) {
@@ -103,4 +101,4 @@ const createGrid = () => {
 }
 handlingModes()
 createGrid()
-addSketchToGrid()
+handleGridFunctionality()
