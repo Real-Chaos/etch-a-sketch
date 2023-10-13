@@ -89,7 +89,7 @@ body {
 
 .grid {
   display: grid;
-  width: 700px;
+  width: 100%;
   background-color: white;
   height: 350px;
   flex-grow: 1;

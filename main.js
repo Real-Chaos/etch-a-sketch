@@ -82,14 +82,16 @@ const handleGridFunctionality = () => {
   clearGridButton.addEventListener('click', clearGrid)
 }
 
+
+gridSize.addEventListener('input', () => {
+  sizeIndicator.textContent = `${gridSize.value} x ${gridSize.value}`
+  createGrid()
+  handleGridFunctionality()
+})
+
 const createGrid = () => {
   grid.innerHTML = ''
   sizeIndicator.textContent = `${gridSize.value} x ${gridSize.value}`
-  gridSize.addEventListener('input', () => {
-    sizeIndicator.textContent = `${gridSize.value} x ${gridSize.value}`
-    createGrid()
-    handleGridFunctionality()
-  })
   if (grid.innerHTML === '') {
     for (let i = 0; i <= gridSize.value * gridSize.value; i++) {
       const div = document.createElement('div')
@@ -102,3 +104,4 @@ const createGrid = () => {
 handlingModes()
 createGrid()
 handleGridFunctionality()
+
