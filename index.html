@@ -11,17 +11,19 @@
       <h1>Etch A Sketch</h1>
       <div class="grid-container">
         <div class="grid-options">
-          <input type="color" id="color-picker" /> 
-          <button>Color Mode</button>
-          <button>Rainbow Mode</button>
-          <Button>Eraser</Button>
-          <button>Clear</button>
-          <input type="range" id="range" min="16" max="100">
+          <input class="color-selected" type="color" id="color-picker" />
+          <button class="color">Color Mode</button>
+          <button class="rainbow">Rainbow Mode</button>
+          <button class="eraser">Eraser</button>
+          <button class="clear-grid">Clear</button>
+          <h4 class="size-indicator">64 x 64</h4>
+          <input class="grid-size" type="range" id="range" min="3" max="32" />
         </div>
-        <div class="grid"></div>
+        <div class="grid">
+        </div>
       </div>
     </div>
-<footer>&copy; Etch-a-Sketch </footer>
+    <footer>&copy; Etch-a-Sketch</footer>
     <script src="./main.js"></script>
   </body>
 </html>

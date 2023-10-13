@@ -62,6 +62,12 @@ body {
 }
 
 
+.grid-options h4 {
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: var(--main-color);
+  font-size: 30px;
+}
+
 .grid-options button {
   width: 50%;
   background: transparent;
@@ -71,18 +77,31 @@ body {
   transition: 500ms;
 }
 
+
+.grid-options .color {
+  background: #333;
+  color: white;
+}
 .grid-options button:hover {
   transform: scale(1.05);
   transition: 500ms;
 }
 
 .grid {
-  display: flex;
-  width: 100%;
+  display: grid;
+  width: 700px;
   background-color: white;
   height: 350px;
   flex-grow: 1;
   cursor: pointer;
+  /* grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(16, 1fr); */
+}
+
+.grid div {
+  border: 1px solid red;
+  display: inline;
+  width: 100%;
 }
 
 #range {
