@@ -22,7 +22,17 @@ const handlingModes = () => {
 const colorMode = () => {
   if (mode === 'color') {
     colorSelected.addEventListener('change', (e) => {})
+    
   }
+}
+
+const addSketchToGrid = () => {
+  const gridDivs = document.querySelectorAll('.grid div')
+  gridDivs.forEach(div => {
+    div.addEventListener('mouseover', (e) => {
+      e.target.style.backgroundColor = colorSelected.value
+    })
+  })
 }
 
 const createGrid = () => {
@@ -31,6 +41,7 @@ const createGrid = () => {
   gridSize.addEventListener('input', () => {
     sizeIndicator.textContent = `${gridSize.value} x ${gridSize.value}`
     createGrid()
+    addSketchToGrid()
   })
   if (grid.innerHTML === '') {
     for (let i = 0; i <= gridSize.value * gridSize.value; i++) {
@@ -38,7 +49,6 @@ const createGrid = () => {
       grid.style.gridTemplateColumns = `repeat(${gridSize.value}, 1fr)`
       grid.style.gridTemplateRows = `repeat(${gridSize.value}, 1fr)`
       grid.appendChild(div)
-      console.log(div)
     }
   }
 }
@@ -46,4 +56,5 @@ const createGrid = () => {
 colorMode()
 handlingModes()
 createGrid()
+addSketchToGrid()
 
